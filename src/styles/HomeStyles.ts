@@ -1,62 +1,82 @@
-import { StyleSheet, Dimensions } from 'react-native';
-
-// Obtén las dimensiones de la pantalla
-const { width } = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 export const homeStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFF',
-    },
-    header: {
-        alignItems: 'center',
-        marginBottom: 20,
+        backgroundColor: '#FFFFFF',
     },
     headerBar: {
-        backgroundColor: '#FBC63C', // Fondo amarillo
-        width: width, // Ancho completo de la pantalla
-        height: 60,
-        justifyContent: 'center',
+        backgroundColor: '#FBC63C',
+        padding: 20,
         alignItems: 'center',
-        position: 'absolute', // Hace que se ajuste a la parte superior
-        top: 0, // Asegura que esté en la parte superior de la pantalla
-        zIndex: 1, // Asegura que esté por encima del contenido
+        justifyContent: 'center',
     },
     headerText: {
-        color: '#FFF',
         fontSize: 24,
         fontWeight: 'bold',
+        color: '#FFF',
+    },
+    content: {
+        flex: 1,
+    },
+    backgroundImage: {
+        width: '100%',
+        height: 220,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    sectionWelcome: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        padding: 87,
+        borderRadius: 10,
+        alignItems: 'center',
+        width: '100%',
     },
     title: {
-        fontSize: 28,
+        fontSize: 20,
         fontWeight: 'bold',
-        color: '#C3922F',
-        marginTop: 80, // Añadir margen superior para que el título no se solape con el header
-        textAlign: 'center', // Centrar el texto
+        color: '#FFF',
     },
-    illustration: {
-        width: '100%',
-        height: 250,
-        resizeMode: 'contain',
-        marginBottom: 20,
-    },
-    welcomeContainer: {
-        backgroundColor: '#F0E8D8',
-        padding: 15, // Ajuste de padding para mayor espacio interno
-        borderRadius: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 20,
-    },
-    welcomeText: {
-        flex: 1,
+    subtitle: {
         fontSize: 16,
-        color: '#7A5C1E',
-        marginRight: 10,
+        color: '#FFF',
     },
-    chatbotImage: {
-        width: 150,
-        height: 150,
-        resizeMode: 'contain',
+    articlesContainer: {
+        padding: 20,
+    },
+    sectionTitle: {
+        fontSize: 24, // Tamaño más grande para el título de la sección
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 20, // Espacio inferior para separar el título de los artículos
+    },
+    article: {
+        flexDirection: 'row',
+        marginVertical: 10,
+        backgroundColor: '#F0E8D8',
+        borderRadius: 10,
+        overflow: 'hidden',
+        alignItems: 'center',
+    },
+    articleImage: {
+        width: 100,
+        height: 100,
+        resizeMode: 'cover',
+        borderRadius: 10,
+        margin: 10, // Agrega un espacio alrededor de la imagen
+    },
+    articleContent: {
+        flex: 1,
+        padding: 10,
+    },
+    articleTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#333',
+    },
+    articleDescription: {
+        fontSize: 14,
+        color: '#666',
+        marginTop: 5,
     },
 });

@@ -36,7 +36,7 @@ const ProfileScreen = () => {
 
             <View style={profileStyles.profileContainer}>
                 <Image
-                    source={require('../../assets/image/feliz.png')}
+                    source={require('../../assets/image/avatar1.png')}
                     style={profileStyles.profileImage}
                 />
                 <Text style={profileStyles.userName}>Angel Yael Hernandez Medina</Text>
