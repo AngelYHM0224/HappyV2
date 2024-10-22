@@ -23,7 +23,7 @@ const ProfileEditScreen = () => {
                 if (userDoc.exists()) {
                     const userData = userDoc.data();
                     setName(userData.name || '');
-                    setEmail(userData.email || '');
+                    setEmail(userData.email || user.email);
                     setPhone(userData.phone || '');
                 }
             }
@@ -42,6 +42,7 @@ const ProfileEditScreen = () => {
                     name,
                     phone,
                 });
+
                 Alert.alert('Éxito', 'Datos actualizados correctamente.');
             } catch (error) {
                 Alert.alert('Error', 'Hubo un problema al actualizar los datos.');
