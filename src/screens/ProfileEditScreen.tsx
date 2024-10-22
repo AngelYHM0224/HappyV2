@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { profileEditStyles } from '../styles/ProfileEditStyles';
 import { getAuth } from 'firebase/auth';
-import { doc, getFirestore, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, getFirestore, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { app } from '../api/firebaseAuth'; // Asegúrate de que la configuración esté correcta
 
 const ProfileEditScreen = () => {
@@ -38,12 +38,25 @@ const ProfileEditScreen = () => {
         if (user) {
             try {
                 const userRef = doc(db, 'users', user.uid);
-                await updateDoc(userRef, {
-                    name,
-                    phone,
-                });
+                const userDoc = await getDoc(userRef);
 
-                Alert.alert('Éxito', 'Datos actualizados correctamente.');
+                // Verifica si el documento existe
+                if (userDoc.exists()) {
+                    // Si existe, actualiza los datos
+                    await updateDoc(userRef, {
+                        name,
+                        phone,
+                    });
+                    Alert.alert('Éxito', 'Datos actualizados correctamente.');
+                } else {
+                    // Si no existe, créalo con los datos proporcionados
+                    await setDoc(userRef, {
+                        name,
+                        email: user.email,  // Incluye también el email, que no debe cambiar
+                        phone,
+                    });
+                    Alert.alert('Éxito', 'Documento creado y datos actualizados correctamente.');
+                }
             } catch (error) {
                 Alert.alert('Error', 'Hubo un problema al actualizar los datos.');
                 console.error('Error al actualizar los datos:', error);

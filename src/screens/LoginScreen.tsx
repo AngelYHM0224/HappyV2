@@ -17,31 +17,26 @@ const LoginScreen = () => {
     const navigation = useNavigation<LoginScreenNavigationProp>(); // Tipar correctamente useNavigation
 
     const handleLogin = () => {
-        // Lógica de inicio de sesión con Firebase
         signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // El usuario ha iniciado sesión correctamente
-            const user = userCredential.user;
-            console.log('Usuario logueado:', user);
-            Alert.alert('Inicio de sesión exitoso', '¡Bienvenido de nuevo!');
-            
-            // Navega a la pantalla "Home"
-            navigation.navigate('HomeNavigator');
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            Alert.alert('Error al iniciar sesión', errorMessage);
-        });
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log('Usuario logueado:', user);
+                Alert.alert('Inicio de sesión exitoso', '¡Bienvenido de nuevo!');
+                navigation.navigate('HomeNavigator');
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                Alert.alert('Error al iniciar sesión', errorMessage);
+            });
     };
 
     return (
         <View style={LoginStyles.container}>
             {/* Logo por encima del icono y texto */}
-
             <View style={LoginStyles.logoContainer}>
                 <Image
-                    source={require('../../assets/image/logosinfondo.png')}  // Ruta de la imagen
-                    style={LoginStyles.logoImage}  // Asegúrate de definir el estilo en LoginStyles
+                    source={require('../../assets/image/logosinfondo.png')} // Ruta de la imagen
+                    style={LoginStyles.logoImage} // Asegúrate de definir el estilo en LoginStyles
                 />
                 <FontAwesome name="user-circle" size={100} color="#FFF" />
                 <Text style={LoginStyles.logoText}>Happy GPT</Text>
@@ -52,7 +47,7 @@ const LoginScreen = () => {
                 <TextInput
                     style={LoginStyles.input}
                     placeholder="Correo electrónico"
-                    placeholderTextColor="#FFF" // Cambiar el color del placeholder a blanco
+                    placeholderTextColor="#FFF"
                     value={email}
                     onChangeText={setEmail}
                 />
@@ -63,14 +58,15 @@ const LoginScreen = () => {
                 <TextInput
                     style={LoginStyles.input}
                     placeholder="Password"
-                    placeholderTextColor="#FFF" // Cambiar el color del placeholder a blanco
+                    placeholderTextColor="#FFF"
                     value={password}
                     onChangeText={setPassword}
                     secureTextEntry
                 />
             </View>
 
-            <TouchableOpacity style={LoginStyles.forgotPassword}>
+            {/* Asegúrate de que este botón navegue correctamente a ForgotPassword */}
+            <TouchableOpacity style={LoginStyles.forgotPassword} onPress={() => navigation.navigate('ForgotPassword')}>
                 <Text style={LoginStyles.forgotText}>¿Olvidaste tu contraseña?</Text>
             </TouchableOpacity>
 
@@ -79,9 +75,7 @@ const LoginScreen = () => {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-                <Text style={LoginStyles.registerText}>
-                    ¿No tienes cuenta? Regístrate
-                </Text>
+                <Text style={LoginStyles.registerText}>¿No tienes cuenta? Regístrate</Text>
             </TouchableOpacity>
         </View>
     );

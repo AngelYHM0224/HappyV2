@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import StandbyScreen from '../screens/StandbyScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import HomeNavigator from './HomeNavigator'; // Importa el Tab Navigator
 import ProfileEditScreen from '../screens/ProfileEditScreen'; // Importa la pantalla de edición de perfil
 
@@ -11,6 +12,7 @@ export type RootParamList = {
     Standby: undefined;
     Login: undefined;
     Register: undefined;
+    ForgotPassword: undefined;
     HomeNavigator: undefined; // Ahora apunta a HomeNavigator
     ProfileEdit: undefined; // Añade la ruta para editar perfil
 };
@@ -34,6 +36,11 @@ const AppNavigator = () => {
             <Stack.Screen
                 name="Register"
                 component={RegisterScreen}
+                options={{ headerShown: false }} 
+            />
+            <Stack.Screen
+                name="ForgotPassword"
+                component={ForgotPasswordScreen}
                 options={{ headerShown: false }} 
             />
             <Stack.Screen

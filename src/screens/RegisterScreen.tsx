@@ -63,7 +63,7 @@ const RegisterScreen = () => {
                 />
             </View>
 
-            <View style={RegisterStyles.inputContainer}>
+            {/* <View style={RegisterStyles.inputContainer}>
                 <FontAwesome name="phone" size={24} color="white" />
                 <TextInput
                     style={RegisterStyles.input}
@@ -73,7 +73,7 @@ const RegisterScreen = () => {
                     onChangeText={setPhone}
                     keyboardType="phone-pad"
                 />
-            </View>
+            </View> */}
 
             <View style={RegisterStyles.inputContainer}>
                 <FontAwesome name="lock" size={24} color="white" />
