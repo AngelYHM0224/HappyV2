@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore'; // Agrega esta línea
+import { getFirestore } from 'firebase/firestore'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
@@ -15,7 +15,7 @@ const firebaseConfig = {
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app); // Agrega esta línea
+const db = getFirestore(app); 
 
 // Guardar el usuario autenticado en AsyncStorage
 onAuthStateChanged(auth, async (user) => {
@@ -26,4 +26,4 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-export { app, auth, db }; // Asegúrate de exportar 'db'
+export { app, auth, db }; 

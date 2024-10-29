@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Clave API de OpenAI
-const API_KEY = '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'; 
+const API_KEY = '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'; 
 
 // Configura Axios para hacer solicitudes a la API de OpenAI
 const openaiAPI = axios.create({
@@ -29,13 +29,13 @@ const moderateContent = async (content: string) => {
       results.categories['self-harm'] ||
       results.categories['sexual/minors']
     ) {
-      return true;  // Contenido inapropiado detectado
+      return true;  
     }
 
-    return false;  // Contenido apropiado
+    return false;  
   } catch (error) {
     console.error('Error al verificar contenido con la API de moderación:', error);
-    return true;  // Si hay un error, por precaución, asume que el contenido es inapropiado
+    return true;  
   }
 };
 
